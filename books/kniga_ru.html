@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Как понравиться девушке — Эдриан Трейп</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A1130;
+    --lapis: #12224A;
+    --lapis-2: #1C3068;
+    --pom: #D23A55;
+    --saffron: #F2B632;
+    --chalk: #F5F1EA;
+    --muted: #B4BCD6;
+    --line: rgba(245, 241, 234, .16);
+    --display: "Oswald", "Arial Narrow", "Impact", sans-serif;
+    --text: "PT Sans", "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--chalk);
+    font-family: var(--text);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
+
+  /* ---------- top bar ---------- */
+  .bar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(10, 17, 48, .92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar-in {
+    max-width: 860px; margin: 0 auto; padding: 10px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .brand { font-family: var(--display); font-weight: 500; font-size: 17px; letter-spacing: .02em; color: var(--muted); }
+  .lang { display: none; }
+  .lang-old { display: inline-flex; border: 2px solid var(--saffron); border-radius: 999px; overflow: hidden; }
+  .lang button {
+    font: 700 15px var(--display); letter-spacing: .06em;
+    background: transparent; color: var(--saffron);
+    border: 0; padding: 7px 18px; cursor: pointer; min-height: 40px;
+  }
+  .lang button[aria-pressed="true"] { background: var(--saffron); color: var(--ink); }
+  .progress { height: 3px; background: transparent; }
+  .progress i { display: block; height: 100%; width: 0; background: var(--pom); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 64px 20px 72px;
+    background:
+      linear-gradient(135deg, rgba(210,58,85,.0) 0%, rgba(210,58,85,.0) 60%, rgba(210,58,85,.18) 100%),
+      var(--lapis);
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; opacity: .10; pointer-events: none;
+    background-image:
+      linear-gradient(45deg, var(--chalk) 1px, transparent 1px),
+      linear-gradient(-45deg, var(--chalk) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .hero-in { position: relative; max-width: 860px; margin: 0 auto; }
+  .hero h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(46px, 13vw, 118px);
+    line-height: .96; letter-spacing: -.005em;
+    margin: 0 0 24px; max-width: 12ch;
+  }
+  .hero .tag {
+    font-size: clamp(20px, 4.4vw, 26px); line-height: 1.35;
+    max-width: 30ch; margin: 0 0 12px; color: var(--saffron); font-weight: 700;
+  }
+  .hero .sub { color: var(--muted); max-width: 46ch; margin: 0 0 28px; }
+  .hero .by {
+    display: inline-block; border-left: 4px solid var(--pom);
+    padding: 2px 0 2px 14px; font-family: var(--display); font-size: 20px; margin-bottom: 30px;
+  }
+  .btn {
+    display: inline-block; text-decoration: none;
+    background: var(--pom); color: #fff;
+    font: 700 18px var(--display); letter-spacing: .04em;
+    padding: 14px 30px; border-radius: 4px;
+  }
+  .btn:hover { background: #e2506b; }
+
+  /* ---------- layout ---------- */
+  main { max-width: 860px; margin: 0 auto; padding: 0 20px 40px; }
+
+  .toc { padding: 44px 0 8px; }
+  .toc h2, .plan h2 { font-family: var(--display); font-size: 34px; margin: 0 0 18px; font-weight: 700; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .toc li { border-top: 1px solid var(--line); }
+  .toc li:last-child { border-bottom: 1px solid var(--line); }
+  .toc a { display: flex; gap: 14px; align-items: baseline; padding: 12px 0; text-decoration: none; }
+  .toc a:hover .t { color: var(--saffron); }
+  .toc .n { font-family: var(--display); color: var(--pom); font-weight: 700; min-width: 28px; font-size: 20px; }
+  .toc .t { font-size: 18px; }
+  @media (min-width: 760px) {
+    .toc ol { grid-template-columns: 1fr 1fr; column-gap: 40px; }
+    .toc li:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+  }
+
+  /* ---------- chapter ---------- */
+  .chapter { padding: 64px 0 8px; border-top: 1px solid var(--line); margin-top: 56px; }
+  .ch-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 20px; }
+  .num {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(72px, 20vw, 132px); line-height: .8;
+    color: transparent; -webkit-text-stroke: 2px var(--saffron);
+    min-width: .62em;
+  }
+  .ch-head h2 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(28px, 7vw, 46px); line-height: 1.05; margin: 4px 0 0;
+  }
+  .ch-head .kick { display: block; color: var(--muted); font: 500 15px var(--display); margin-bottom: 6px; letter-spacing: .02em; }
+  .lead { font-size: 21px; line-height: 1.5; color: var(--chalk); max-width: 60ch; margin: 0 0 24px; font-weight: 700; }
+
+  .points { list-style: none; margin: 0 0 28px; padding: 0; max-width: 62ch; }
+  .points li { position: relative; padding: 0 0 16px 30px; }
+  .points li::before {
+    content: ""; position: absolute; left: 0; top: .62em;
+    width: 12px; height: 12px; background: var(--pom); transform: rotate(45deg);
+  }
+
+  .example { display: grid; gap: 12px; margin: 0 0 24px; }
+  @media (min-width: 700px) { .example { grid-template-columns: 1fr 1fr; } }
+  .ex { padding: 16px 18px; border-radius: 4px; background: var(--lapis); }
+  .ex b { display: block; font-family: var(--display); font-size: 17px; letter-spacing: .03em; margin-bottom: 6px; }
+  .ex p { margin: 0; font-size: 18px; }
+  .ex.bad { border-left: 5px solid var(--pom); }
+  .ex.bad b { color: #FF7B92; }
+  .ex.good { border-left: 5px solid var(--saffron); }
+  .ex.good b { color: var(--saffron); }
+
+  .task {
+    display: flex; gap: 14px; align-items: flex-start; width: 100%; text-align: left;
+    background: transparent; color: var(--chalk);
+    border: 2px dashed var(--saffron); border-radius: 6px;
+    padding: 16px 18px; cursor: pointer; font: inherit;
+  }
+  .task .box {
+    flex: none; width: 26px; height: 26px; border: 2px solid var(--saffron); border-radius: 4px;
+    display: grid; place-items: center; margin-top: 2px; color: var(--ink); font-weight: 700;
+  }
+  .task .lbl { display: block; font-family: var(--display); color: var(--saffron); font-size: 16px; letter-spacing: .03em; margin-bottom: 2px; }
+  .task[aria-pressed="true"] { border-style: solid; background: rgba(242,182,50,.10); }
+  .task[aria-pressed="true"] .box { background: var(--saffron); }
+  .task[aria-pressed="true"] .box::after { content: "✓"; }
+  .tap { color: var(--muted); font-size: 15px; margin: 10px 0 0; }
+
+  /* ---------- plan ---------- */
+  .plan { padding: 64px 0 8px; border-top: 1px solid var(--line); margin-top: 64px; }
+  .plan > p { color: var(--muted); max-width: 52ch; margin: 0 0 28px; }
+  .weeks { list-style: none; margin: 0; padding: 0; position: relative; }
+  .weeks::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 3px; background: var(--pom); }
+  .weeks li { position: relative; padding: 0 0 26px 52px; }
+  .weeks li::before {
+    content: ""; position: absolute; left: 6px; top: 6px; width: 21px; height: 21px;
+    background: var(--ink); border: 4px solid var(--saffron); border-radius: 50%;
+  }
+  .weeks h3 { font-family: var(--display); font-size: 24px; margin: 0 0 4px; color: var(--saffron); }
+  .weeks p { margin: 0; }
+
+  /* ---------- outro ---------- */
+  .outro { margin-top: 64px; padding: 56px 24px; background: var(--pom); border-radius: 6px; }
+  .outro q {
+    display: block; quotes: none;
+    font-family: var(--display); font-weight: 700; line-height: 1.08;
+    font-size: clamp(30px, 8vw, 58px); max-width: 16ch;
+  }
+  .outro cite { display: block; margin-top: 20px; font-style: normal; font-size: 19px; }
+  footer { text-align: left; color: var(--muted); font-size: 15px; padding: 28px 0 60px; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <span class="brand" id="brand"></span>
+    <div class="lang" role="group" aria-label="Язык / Забон">
+      <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang="tj" aria-pressed="false">TJ</button>
+    </div>
+  </div>
+  <div class="progress"><i id="prog"></i></div>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <h1 id="h1"></h1>
+    <p class="tag" id="tag"></p>
+    <p class="sub" id="sub"></p>
+    <span class="by" id="by"></span><br>
+    <a class="btn" href="#toc" id="start"></a>
+  </div>
+</section>
+
+<main id="app"></main>
+
+<script>
+/* ============ ТЕКСТЫ ИНТЕРФЕЙСА / МАТНҲОИ ИНТЕРФЕЙС ============ */
+const UI = {
+  ru: {
+    doc: "Как понравиться девушке — Эдриан Трейп",
+    brand: "Эдриан Трейп",
+    h1: "Как понравиться девушке",
+    tag: "Не гонись за ней. Стань тем, за кем хочется идти.",
+    sub: "Практическое руководство: чёткие советы и примеры из жизни. Без воды.",
+    by: "Автор: Эдриан Трейп",
+    start: "Начать читать",
+    toc: "Оглавление",
+    chapter: "Глава",
+    bad: "✕ Плохо",
+    good: "✓ Хорошо",
+    task: "Задание",
+    tap: "Нажми на задание, чтобы отметить его выполненным.",
+    plan: "План на 30 дней",
+    planLead: "Читать мало — нужно делать. Вот маршрут на месяц.",
+    week: "Неделя",
+    quote: "Сила — это уважение к себе и к ней.",
+    cite: "Эдриан Трейп",
+    foot: "© Эдриан Трейп. Все права защищены."
+  },
+  tj: {
+    doc: "Чӣ тавр ба духтар маъқул шудан — Эдриан Трейп",
+    brand: "Эдриан Трейп",
+    h1: "Чӣ тавр ба духтар маъқул шудан",
+    tag: "Аз паси вай надав. Он касе шав, ки мехоҳанд аз паси ӯ раванд.",
+    sub: "Роҳнамои амалӣ: маслиҳатҳои возеҳ ва мисолҳо аз зиндагӣ. Бе сухани зиёдатӣ.",
+    by: "Муаллиф: Эдриан Трейп",
+    start: "Оғози хондан",
+    toc: "Мундариҷа",
+    chapter: "Боб",
+    bad: "✕ Нодуруст",
+    good: "✓ Дуруст",
+    task: "Вазифа",
+    tap: "Барои қайд кардани иҷро ба вазифа зер кун.",
+    plan: "Нақшаи 30 рӯза",
+    planLead: "Хондан кам аст — бояд амал кард. Инак, роҳнамо барои як моҳ.",
+    week: "Ҳафтаи",
+    quote: "Қувват — эҳтиром ба худ ва ба вай аст.",
+    cite: "Эдриан Трейп",
+    foot: "© Эдриан Трейп. Ҳамаи ҳуқуқҳо ҳифз шудаанд."
+  }
+};
+
+/* ============ ГЛАВЫ / БОБҲО ============ */
+const CH = [
+  { /* 1 */
+    ru: {
+      t: "Сначала — ты сам",
+      lead: "Девушка выбирает не слова, а мужчину, который уважает себя. Без фундамента любые приёмы — пустышка.",
+      pts: [
+        "Гигиена и стиль: чистая одежда по размеру, свежее дыхание, аккуратные ногти и причёска. Это не про деньги, это про уважение.",
+        "Тело: 3 тренировки в неделю. Не ради «кубиков», а ради энергии и ровной осанки.",
+        "Цель и увлечение: у тебя должна быть своя жизнь — учёба, работа, спорт, своё дело. Человек с целью интересен."
+      ],
+      bad: "«У меня ничего нет, только ты».",
+      good: "«Я сейчас занимаюсь спортом и учу английский — хочу открыть своё дело. А у тебя какие планы?»",
+      task: "Запиши 3 цели на год и сделай первый шаг к одной из них сегодня."
+    },
+    tj: {
+      t: "Аввал — худат",
+      lead: "Духтар суханҳоро интихоб намекунад, вай мардеро интихоб мекунад, ки худро эҳтиром мекунад. Бе таҳкурсӣ ҳар як ҳила беарзиш аст.",
+      pts: [
+        "Тозагӣ ва услуб: либоси тозаи мувофиқи андоза, нафаси тоза, нохунҳо ва мӯйсари ботартиб. Ин дар бораи пул нест, дар бораи эҳтиром аст.",
+        "Ҷисм: дар як ҳафта 3 машқ. На барои «мушакҳо», балки барои қувват ва қомати рост.",
+        "Ҳадаф ва шавқ: ту бояд зиндагии худро дошта бошӣ — таҳсил, кор, варзиш, кори худ. Инсони соҳиби ҳадаф ҷолиб аст."
+      ],
+      bad: "«Ман ҳеҷ чиз надорам, танҳо ту».",
+      good: "«Ман ҳозир варзиш мекунам ва забони инглисӣ меомӯзам — мехоҳам кори худамро оғоз кунам. Ту чӣ нақшаҳо дорӣ?»",
+      task: "Се ҳадафи солонаи худро бинавис ва имрӯз ба яке аз онҳо қадами аввалро гузор."
+    }
+  },
+  { /* 2 */
+    ru: {
+      t: "Уверенность и язык тела",
+      lead: "Ещё до первого слова она уже «прочитала» тебя. Осанка, взгляд и голос говорят громче слов.",
+      pts: [
+        "Спина прямая, плечи расправлены, голова поднята.",
+        "Зрительный контакт на 2–3 секунды, затем лёгкая улыбка. Не сверли взглядом.",
+        "Говори медленно и чуть ниже. Спешка выдаёт волнение.",
+        "Уверенность — это не наглость. Наглый ломает границы, уверенный их уважает."
+      ],
+      bad: "Смотришь в телефон и бормочешь что-то под нос.",
+      good: "«Привет, я Рустам» — глядя в глаза и с улыбкой.",
+      task: "5 минут в день перед зеркалом: осанка, улыбка, голос."
+    },
+    tj: {
+      t: "Боварӣ ва забони бадан",
+      lead: "Ҳанӯз пеш аз калимаи аввал вай туро «хондааст». Қомат, нигоҳ ва овоз аз суханон баландтар мегӯянд.",
+      pts: [
+        "Пушт рост, китфҳо кушода, сар боло.",
+        "Ба чашм 2–3 сония нигоҳ кун, баъд табассуми сабук. Чашм дӯхта наист.",
+        "Оҳиста ва каме паст гап зан. Шитобкорӣ ҳаяҷонро фош мекунад.",
+        "Боварӣ беадабӣ нест. Беадаб ҳудудро вайрон мекунад, боварибахш онро эҳтиром мекунад."
+      ],
+      bad: "Ба телефон менигарӣ ва зери лаб ғур-ғур мекунӣ.",
+      good: "«Салом, ман Рустам» — ба чашм нигариста ва бо табассум.",
+      task: "Ҳар рӯз 5 дақиқа назди оина: қомат, табассум, овоз."
+    }
+  },
+  { /* 3 */
+    ru: {
+      t: "Как подойти и познакомиться",
+      lead: "Страх подойти проходит только действием. Чем дольше думаешь — тем сильнее боишься.",
+      pts: [
+        "Правило 3 секунд: увидел — подошёл в течение 3 секунд, пока голова не придумала отговорки.",
+        "Начни просто: «Привет», искренний комплимент, вопрос по ситуации.",
+        "Будь готов к «нет». Отказ — не поражение, а опыт. Скажи «Хорошего дня» и уйди с достоинством."
+      ],
+      bad: "«Девушка, дайте номер!»",
+      good: "«Привет! Заметил у тебя интересную книгу — посоветуешь? И да, я Рустам».",
+      task: "На этой неделе поздоровайся и заведи короткий разговор с 3 новыми людьми."
+    },
+    tj: {
+      t: "Чӣ тавр наздик шуда шинос шудан",
+      lead: "Тарси наздик шудан танҳо бо амал мегузарад. Ҳар қадар дертар андеша кунӣ, ҳамон қадар бештар метарсӣ.",
+      pts: [
+        "Қоидаи 3 сония: дидӣ — дар давоми 3 сония наздик шав, то ақл баҳона наёфтааст.",
+        "Аз оддӣ оғоз кун: «Салом», таърифи самимӣ, саволи мувофиқи вазъият.",
+        "Ба «не» омода бош. Рад шудан шикаст нест, таҷриба аст. Бигӯ «Рӯзатон хуш» ва бо шаъну шараф бирав."
+      ],
+      bad: "«Духтарҷон, рақамат чанд?»",
+      good: "«Салом! Дидам китоби ҷолиб дорӣ — тавсия медиҳӣ? Ва ҳа, ман Рустам».",
+      task: "Дар ин ҳафта бо 3 нафари нав салом кун ва суҳбати кӯтоҳ оғоз намо."
+    }
+  },
+  { /* 4 */
+    ru: {
+      t: "Умей говорить и слушать",
+      lead: "Девушке запоминается не то, что ты сказал, а то, что она почувствовала рядом с тобой.",
+      pts: [
+        "Правило 70/30: она говорит 70%, ты — 30%.",
+        "Задавай открытые вопросы: «почему», «как», «что тебе в этом нравится».",
+        "Запоминай детали и возвращайся к ним. Это показывает, что ты слушал.",
+        "Не перебивай, не спорь ради спора, не жалуйся на жизнь."
+      ],
+      bad: "«А у меня вот тоже…» — и десять минут рассказа только о себе.",
+      good: "«Ты говорила, что любишь рисовать. Что тебя в этом цепляет?»",
+      task: "В следующем разговоре задай 5 открытых вопросов."
+    },
+    tj: {
+      t: "Гуфтан ва гӯш кардан омӯз",
+      lead: "Ба духтар на он чи гуфтӣ, балки он чи дар паҳлӯи ту эҳсос кард, дар хотир мемонад.",
+      pts: [
+        "Қоидаи 70/30: вай 70% гап мезанад, ту — 30%.",
+        "Саволҳои кушода бидеҳ: «чаро», «чӣ тавр», «дар ин чӣ ба ту маъқул аст».",
+        "Ҷузъиётро дар хотир нигоҳ дор ва ба онҳо баргард. Ин нишон медиҳад, ки ту гӯш кардӣ.",
+        "Сухани вайро набур, барои баҳс баҳс накун, аз зиндагӣ шикоят накун."
+      ],
+      bad: "«Ман ҳам…» — ва 10 дақиқа фақат дар бораи худ нақл кардан.",
+      good: "«Гуфта будӣ, ки расмкаширо дӯст медорӣ. Дар ин чӣ туро ҷалб мекунад?»",
+      task: "Дар суҳбати навбатӣ 5 саволи кушода бидеҳ."
+    }
+  },
+  { /* 5 */
+    ru: {
+      t: "Юмор и лёгкость",
+      lead: "С весёлым и спокойным парнем хочется быть рядом. С напряжённым — хочется уйти.",
+      pts: [
+        "Смеши, а не унижай. Шутка над собой — сила, шутка над ней — слабость.",
+        "Держи хорошее настроение. Энергия заразительна.",
+        "Никогда не шути над её внешностью, семьёй и происхождением."
+      ],
+      bad: "«Ты смешно выглядишь».",
+      good: "«Хотел приготовить ужин и чуть не сжёг кухню. Теперь я мастер заказа еды».",
+      task: "Придумай одну смешную историю про себя и расскажи её сегодня."
+    },
+    tj: {
+      t: "Юмор ва сабукӣ",
+      lead: "Бо бачаи хушҳол ва ором будан мехоҳӣ. Аз бачаи асабӣ рафтан мехоҳӣ.",
+      pts: [
+        "Бихандон, на хор кун. Шӯхӣ бо худ — қувват, шӯхӣ бо вай — заифӣ.",
+        "Кайфияти хуш дошта бош. Энергия сироят мекунад.",
+        "Ҳеҷ гоҳ дар бораи намуди зоҳирӣ, оила ва аслу насаби вай шӯхӣ накун."
+      ],
+      bad: "«Ту хандаовар менамоӣ».",
+      good: "«Хостам хӯрок пазам, ошхонаро тақрибан сӯзондам. Ҳоло устоди фармоиши хӯрок шудаам».",
+      task: "Як ҳикояи хандаовар дар бораи худат ихтироъ кун ва имрӯз нақл намо."
+    }
+  },
+  { /* 6 */
+    ru: {
+      t: "Переписка",
+      lead: "Переписка — мост к встрече, а не место, где живут.",
+      pts: [
+        "Пиши по делу и интересно, а не «привет, как дела» двадцать дней подряд.",
+        "Не заваливай сообщениями: одно сообщение, а не десять. Не требуй мгновенного ответа.",
+        "Цель переписки — встреча. Через 2–3 дня общения зови её увидеться."
+      ],
+      bad: "«Привет», «Ты тут?», «Почему молчишь?»",
+      good: "«Слушай, недавно открылось кафе с лучшим чаем в городе. В субботу в 17:00 сходим?»",
+      task: "Напиши одно короткое сообщение, которое заканчивается приглашением на встречу."
+    },
+    tj: {
+      t: "Мукотиба",
+      lead: "Мукотиба пул ба сӯи вохӯрӣ аст, на ҷое, ки дар он зиндагӣ мекунанд.",
+      pts: [
+        "Ҷолиб ва бо мақсад навис, на 20 рӯз пай дар пай «салом, аҳволат чӣ хел?».",
+        "Паёмҳоро ғарқ накун: як паём, на даҳто. Ҷавоби фаврӣ талаб накун.",
+        "Мақсади мукотиба — вохӯрӣ. Баъди 2–3 рӯзи муошират ӯро ба вохӯрӣ даъват кун."
+      ],
+      bad: "«Салом», «Инҷо ҳастӣ?», «Чаро хомӯшӣ?»",
+      good: "«Гӯш кун, ба наздикӣ қаҳвахонае кушода шуд, ки беҳтарин чойи шаҳр дорад. Шанбе соати 17:00 меравем?»",
+      task: "Як паёми кӯтоҳ бинавис, ки бо даъват ба вохӯрӣ анҷом ёбад."
+    }
+  },
+  { /* 7 */
+    ru: {
+      t: "Первое свидание",
+      lead: "Первое свидание — не экзамен. Твоя задача: чтобы ей было легко, спокойно и интересно.",
+      pts: [
+        "Выбери простое место: кафе, прогулка, парк, выставка. Без пафоса и долгов.",
+        "Приходи вовремя, в чистой одежде, в хорошем настроении.",
+        "Проявляй заботу: открой дверь, спроси, комфортно ли ей. Будь щедрым по своим возможностям, но без «ты мне должна».",
+        "Заранее продумай 3 темы для разговора.",
+        "Заверши чётко: «Мне было классно. Хочу повторить»."
+      ],
+      bad: "Опаздываешь, сидишь в телефоне и молчишь.",
+      good: "«Я пришёл на 5 минут раньше и занял хороший столик. Ты говорила, что любишь чай — здесь лучший».",
+      task: "Составь план свидания: место, время и 3 темы для разговора."
+    },
+    tj: {
+      t: "Вохӯрии аввал",
+      lead: "Вохӯрии аввал имтиҳон нест. Вазифаи ту: ба вай осон, ором ва ҷолиб бошад.",
+      pts: [
+        "Ҷои оддӣ интихоб кун: қаҳвахона, сайру гашт, боғ, намоишгоҳ. Бе ҷоҳ ва қарз.",
+        "Саривақт биё, бо либоси тоза ва кайфияти хуш.",
+        "Ғамхорӣ кун: дарро кушо, бипурс, ки ба вай роҳат аст ё не. Мувофиқи имконият саховатманд бош, вале бе «ту ба ман қарздорӣ».",
+        "Аз пеш 3 мавзӯи суҳбат омода кун.",
+        "Вохӯриро возеҳ анҷом деҳ: «Ба ман хеле хуш гузашт. Мехоҳам такрор кунем»."
+      ],
+      bad: "Дер мемонӣ, дар телефон менишинӣ ва хомӯш мешавӣ.",
+      good: "«Ман 5 дақиқа барвақт омада, мизи хубе гирифтам. Гуфта будӣ чойро дӯст медорӣ — инҷо беҳтаринаш ҳаст».",
+      task: "Нақшаи вохӯриро нависед: ҷой, вақт ва 3 мавзӯи суҳбат."
+    }
+  },
+  { /* 8 */
+    ru: {
+      t: "Как сделать, чтобы она сама тянулась к тебе",
+      lead: "Хочешь, чтобы она «бегала» за тобой? Лучший способ — не бегать самому. Интерес рождается из твоей ценности, а не из давления.",
+      pts: [
+        "Живи своей жизнью: не отменяй планы ради неё, тренировки и друзья остаются на месте.",
+        "Не будь «доступным всегда»: отвечай спокойно, а не мгновенно. Это не игра, это самоуважение.",
+        "Удивляй поступками: запомни её любимый напиток, напиши слова поддержки перед экзаменом.",
+        "Будь честным: без манипуляций и «игр». Фальшь она чувствует сразу.",
+        "Показывай интерес, но не навязывайся."
+      ],
+      bad: "Бросаешь всё по одному её слову и пишешь 30 раз в день.",
+      good: "«У меня сегодня тренировка, вечером свободен. Давай созвонимся в 20:00?»",
+      task: "На этой неделе не отменяй ни одного личного плана ради девушки."
+    },
+    tj: {
+      t: "Чӣ тавр вай худаш ба сӯи ту майл кунад",
+      lead: "Мехоҳӣ, ки вай «аз паси ту» давад? Роҳи беҳтарин — худат надавидан. Шавқ аз арзиши ту пайдо мешавад, на аз фишор.",
+      pts: [
+        "Зиндагии худро зиндагӣ кун: нақшаҳоятро барои вай бекор накун, машқ ва дӯстон ҷои худро доранд.",
+        "«Ҳамеша дастрас» набош: оромона ҷавоб деҳ, на фавран. Ин бозӣ нест, ин эҳтироми худ аст.",
+        "Бо амал ҳайрон кун: нӯшокии дӯстдоштаи вайро ба хотир биспор, пеш аз имтиҳон суханони дастгирӣ бинавис.",
+        "Ростқавл бош: бе манипулятсия ва «бозиҳо». Дурӯғро вай фавран эҳсос мекунад.",
+        "Шавқ нишон деҳ, аммо худро таҳмил накун."
+      ],
+      bad: "Бо як сухани вай ҳама чизро мепартоӣ ва рӯзе 30 бор менависӣ.",
+      good: "«Имрӯз машқ дорам, шом озодам. Соати 20:00 занг занем?»",
+      task: "Дар ин ҳафта ягон нақшаи шахсиро барои духтар бекор накун."
+    }
+  },
+  { /* 9 */
+    ru: {
+      t: "Уважение и границы",
+      lead: "Настоящий мужчина слышит «нет» и уважает его. Это не слабость, это сила.",
+      pts: [
+        "«Нет» значит «нет». Не дави, не уговаривай, не преследуй.",
+        "Никаких манипуляций, ревности и контроля.",
+        "Уважай её семью, друзей, решения и культуру.",
+        "Если она не заинтересована — уйди достойно. Так ты сохранишь лицо и уважение."
+      ],
+      bad: "«Ну почему ты не хочешь? Я же столько для тебя сделал!»",
+      good: "«Понял. Спасибо за честность. Удачи тебе».",
+      task: "Дай себе слово: никогда не давить на девушку и принимать отказ спокойно."
+    },
+    tj: {
+      t: "Эҳтиром ва ҳудуд",
+      lead: "Марди ҳақиқӣ «не»-ро мешунавад ва онро эҳтиром мекунад. Ин заифӣ нест, қувват аст.",
+      pts: [
+        "«Не» — яъне «не». Фишор наовар, мутеъ накун, таъқиб накун.",
+        "Бе манипулятсия, рашк ва назорат.",
+        "Оила, дӯстон, қарорҳо ва фарҳанги вайро эҳтиром кун.",
+        "Агар вай шавқ надошта бошад — бо шаъну шараф бирав. Ҳамин тавр обрӯ ва эҳтиромро нигоҳ медорӣ."
+      ],
+      bad: "«Чаро намехоҳӣ? Ман барои ту ин қадар кор кардам!»",
+      good: "«Фаҳмидам. Ташаккур барои ростқавлӣ. Барори кор».",
+      task: "Ба худ сухан деҳ: ҳеҷ гоҳ ба духтар фишор намеорам ва рад шуданро оромона мепазирам."
+    }
+  },
+  { /* 10 */
+    ru: {
+      t: "Топ-7 ошибок, которые всё портят",
+      lead: "Иногда достаточно перестать делать глупости, чтобы всё пошло в гору.",
+      pts: [
+        "Навязчивость: 20 сообщений и звонков подряд.",
+        "Ложь и хвастовство: выдуманные достижения.",
+        "Жалобы и нытьё.",
+        "Сравнение её с другими девушками.",
+        "Ревность и контроль.",
+        "Пустая жизнь: ни цели, ни дел, кроме неё.",
+        "Неуважение — к ней, к её семье, к официанту."
+      ],
+      task: "Выбери одну ошибку из списка, которая есть у тебя, и убери её со следующей недели."
+    },
+    tj: {
+      t: "Топ-7 хатое, ки ҳамаро вайрон мекунанд",
+      lead: "Баъзан барои беҳтар шудани ҳама чиз кофист, ки корҳои нодурустро бас кунӣ.",
+      pts: [
+        "Часпидан: 20 паём ва занги пай дар пай.",
+        "Дурӯғ ва худситоӣ: дастовардҳои сохта.",
+        "Шикоят ва нолиш.",
+        "Муқоиса кардани вай бо духтарони дигар.",
+        "Рашк ва назорат.",
+        "Зиндагии холӣ: ҳадаф ва корҳо ғайр аз вай нест.",
+        "Беэҳтиромӣ — ба вай, ба оилаи вай, ба пешхизмат."
+      ],
+      task: "Аз рӯйхат як хатоеро, ки дар ту ҳаст, интихоб кун ва аз ҳафтаи оянда онро бартараф намо."
+    }
+  }
+];
+
+/* ============ ПЛАН 30 ДНЕЙ / НАҚШАИ 30 РӮЗА ============ */
+const PLAN = [
+  {
+    ru: "Основа: гигиена, стиль, режим сна и тренировки. Запиши 3 цели.",
+    tj: "Асос: тозагӣ, услуб, реҷаи хоб ва машқ. 3 ҳадафро бинавис."
+  },
+  {
+    ru: "Практика: осанка, зрительный контакт, 3 новых знакомства.",
+    tj: "Амалия: қомат, нигоҳи чашм, 3 шиносоии нав."
+  },
+  {
+    ru: "Общение: 5 открытых вопросов, юмор, первая переписка.",
+    tj: "Муошират: 5 саволи кушода, юмор, мукотибаи аввал."
+  },
+  {
+    ru: "Действие: пригласи на встречу, покажи уважение, сделай выводы.",
+    tj: "Амал: ба вохӯрӣ даъват кун, эҳтиром нишон деҳ, хулоса бароред."
+  }
+];
+
+/* ============ РЕНДЕР ============ */
+const app = document.getElementById("app");
+let lang = "ru";
+let done = {};
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+  });
+}
+
+function loadState() {
+  try {
+    const d = localStorage.getItem("trp-done");
+    if (d) done = JSON.parse(d) || {};
+  } catch (e) { /* хранилище недоступно */ }
+}
+function saveState() {
+  try {
+        localStorage.setItem("trp-done", JSON.stringify(done));
+  } catch (e) { /* игнорируем */ }
+}
+
+function render() {
+  const u = UI[lang];
+  document.documentElement.lang = lang === "tj" ? "tg" : "ru";
+  document.title = u.doc;
+  document.getElementById("brand").textContent = u.brand;
+  document.getElementById("h1").textContent = u.h1;
+  document.getElementById("tag").textContent = u.tag;
+  document.getElementById("sub").textContent = u.sub;
+  document.getElementById("by").textContent = u.by;
+  document.getElementById("start").textContent = u.start;
+
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+  });
+
+  let html = "";
+
+  /* оглавление */
+  html += '<nav class="toc" id="toc"><h2>' + esc(u.toc) + "</h2><ol>";
+  CH.forEach(function (c, i) {
+    html += '<li><a href="#c' + (i + 1) + '"><span class="n">' + (i + 1) +
+            '</span><span class="t">' + esc(c[lang].t) + "</span></a></li>";
+  });
+  html += "</ol></nav>";
+
+  /* главы */
+  CH.forEach(function (c, i) {
+    const d = c[lang];
+    html += '<section class="chapter" id="c' + (i + 1) + '">';
+    html += '<div class="ch-head"><span class="num" aria-hidden="true">' + (i + 1) + "</span>" +
+            '<h2><span class="kick">' + esc(u.chapter) + " " + (i + 1) + "</span>" + esc(d.t) + "</h2></div>";
+    html += '<p class="lead">' + esc(d.lead) + "</p>";
+    html += '<ul class="points">' + d.pts.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul>";
+    if (d.bad && d.good) {
+      html += '<div class="example">' +
+        '<div class="ex bad"><b>' + esc(u.bad) + "</b><p>" + esc(d.bad) + "</p></div>" +
+        '<div class="ex good"><b>' + esc(u.good) + "</b><p>" + esc(d.good) + "</p></div></div>";
+    }
+    html += '<button type="button" class="task" data-i="' + i + '" aria-pressed="' + (done[i] ? "true" : "false") + '">' +
+            '<span class="box"></span><span><span class="lbl">' + esc(u.task) + "</span>" + esc(d.task) + "</span></button>";
+    if (i === 0) html += '<p class="tap">' + esc(u.tap) + "</p>";
+    html += "</section>";
+  });
+
+  /* план */
+  html += '<section class="plan" id="plan"><h2>' + esc(u.plan) + "</h2><p>" + esc(u.planLead) + '</p><ol class="weeks">';
+  PLAN.forEach(function (w, i) {
+    html += "<li><h3>" + esc(u.week) + " " + (i + 1) + "</h3><p>" + esc(w[lang]) + "</p></li>";
+  });
+  html += "</ol></section>";
+
+  /* финал */
+  html += '<div class="outro"><q>' + esc(u.quote) + "</q><cite>— " + esc(u.cite) + "</cite></div>";
+  html += "<footer>" + esc(u.foot) + "</footer>";
+
+  app.innerHTML = html;
+}
+
+/* переключатель языка */
+document.querySelectorAll(".lang button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    lang = b.dataset.lang;
+    saveState();
+    const y = window.scrollY;
+    render();
+    window.scrollTo(0, y);
+  });
+});
+
+/* отметка заданий */
+app.addEventListener("click", function (e) {
+  const t = e.target.closest(".task");
+  if (!t) return;
+  const i = t.dataset.i;
+  done[i] = !done[i];
+  t.setAttribute("aria-pressed", done[i] ? "true" : "false");
+  saveState();
+});
+
+/* прогресс чтения */
+const prog = document.getElementById("prog");
+function onScroll() {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  prog.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + "%";
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+
+loadState();
+render();
+onScroll();
+</script>
+</body>
+</html>
